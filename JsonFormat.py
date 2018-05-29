@@ -77,7 +77,7 @@ class JsonFormatter:
         res = ''.join(self.stack)
         with open(res_file, 'w') as f:
             f.write(res)
-        print res
+        # print res
 
 
 #if __name__ == "__main__":
