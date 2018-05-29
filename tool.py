@@ -5,6 +5,7 @@ import sys
 import json
 from datetime import datetime
 from ImageProcess import Graphics
+from JsonFormat import JsonFormatter
 
 # 定义压缩比，数值越大，压缩越小
 SIZE_normal = 1.0
@@ -12,6 +13,8 @@ SIZE_small = 1.5
 SIZE_more_small = 2.0
 SIZE_more_small_small = 3.0
 
+Json_filename_raw = "data_raw.json"
+Json_filename_format = "data_format.json"
 
 def make_directory(directory):
     """创建目录"""
@@ -100,7 +103,7 @@ def handle_photo():
     list_info = []
     for i in range(len(file_list)):
         filename = file_list[i]
-        date_str, info = filename.split("_")
+        date_str, info = filename.split("_", 1) # 分割文件名，左半边是日期，右半边是text
         info, _ = info.split(".")
         date = datetime.strptime(date_str, "%Y-%m-%d")
         year_month = date_str[0:7]            
@@ -128,7 +131,7 @@ def handle_photo():
             list_info[-1]['arr']['type'].append('image')
     list_info.reverse()  # 翻转
     final_dict = {"list": list_info}
-    with open("./photos/data.json","w") as fp:
+    with open(Json_filename_raw, "w") as fp:
         json.dump(final_dict, fp)
 
 def cut_photo():
@@ -170,5 +173,10 @@ def git_operation():
 if __name__ == "__main__":
     cut_photo()        # 裁剪图片，裁剪成正方形，去中间部分
     compress_photo()   # 压缩图片，并保存到mini_photos文件夹下
+   
+    handle_photo()     # 将文件处理成json格式
+    
+    jf = JsonFormatter(name=Json_filename_raw)  # 格式化json文件
+    jf.render(Json_filename_format)
+
     git_operation()    # 提交到github仓库
-    #handle_photo()     # 将文件处理成json格式，存到博客仓库中
