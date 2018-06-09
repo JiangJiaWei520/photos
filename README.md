@@ -40,3 +40,5 @@ $ python tool.py # 注意安装python PIL模块
     ]
 }
 ```
+
+<font color="red">注：有异步问题，待优化。</font>
