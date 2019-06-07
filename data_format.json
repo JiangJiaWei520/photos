@@ -58,14 +58,14 @@
             "arr":
             {
                 "link":
-                ["2019-01-01_home_03.jpg"
+                ["2019-01-01_home_03.jpg","2019-01-01_home_02.jpg"
                 ],
                 "text":
-                ["home_03"
+                ["home_03","home_02"
                 ],
                 "year":2019,
                 "type":
-                ["image"
+                ["image","image"
                 ],
                 "month":1
             }
@@ -136,23 +136,6 @@
                 ["image"
                 ],
                 "month":5
-            }
-        },
-        {
-            "date":"2019-01",
-            "arr":
-            {
-                "link":
-                ["2019-01-01_home-02.jpg"
-                ],
-                "text":
-                ["home-02"
-                ],
-                "year":2019,
-                "type":
-                ["image"
-                ],
-                "month":1
             }
         }
     ]
